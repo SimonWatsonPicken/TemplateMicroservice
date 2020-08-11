@@ -1,6 +1,6 @@
 using Xunit;
 
-namespace TemplateMicroservice.Tests.UnitTests.Application
+namespace TemplateMicroservice.Tests.UnitTests.Domain
 {
     public class BlankTest
     {

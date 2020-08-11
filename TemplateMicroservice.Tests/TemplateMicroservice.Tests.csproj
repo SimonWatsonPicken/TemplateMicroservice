@@ -19,9 +19,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="UnitTests\Domain\" />
-    <Folder Include="UnitTests\Infrastructure\" />
-  </ItemGroup>
-
 </Project>
