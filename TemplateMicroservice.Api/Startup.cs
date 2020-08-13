@@ -8,6 +8,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
+using TemplateMicroservice.Api.Application.Commands;
+using TemplateMicroservice.Api.Application.Handlers;
+using TemplateMicroservice.Domain.Aggregates.SampleAggregate;
+using TemplateMicroservice.Domain.Providers;
+using TemplateMicroservice.Infrastructure;
+using TemplateMicroservice.Infrastructure.Providers.SampleProvider;
 
 namespace TemplateMicroservice.Api
 {
@@ -44,9 +50,16 @@ namespace TemplateMicroservice.Api
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
             });
+            
+            services.Configure<SampleCredentialsOptions>(Configuration.GetSection(SampleCredentialsOptions.SampleCredentials));
+            services.AddOptions<SampleCredentialsOptions>();
+
+            services.AddScoped<ICommandHandler<SampleCommand>, SampleCommandHandler>();
+            services.AddScoped<IProvider<SampleDomainEntity>, SampleProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        // ReSharper disable once UnusedMember.Global
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
