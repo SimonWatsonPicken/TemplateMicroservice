@@ -4,9 +4,9 @@ namespace TemplateMicroservice.Tests.ObjectMothers
 {
    internal class SampleDomainEntityMother
     {
-        public static SampleDomainEntity GetValidSampleDomainEntity()
+        public static Author GetValidSampleDomainEntity()
         {
-            return new SampleDomainEntity {Id = 1, Name = "Fred", Age = 25};
+            return new Author {Name = "Fred", ShortBiography = "25"};
         }
     }
 }

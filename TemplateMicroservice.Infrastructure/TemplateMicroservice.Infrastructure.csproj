@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Model\" />
+    <Folder Include="ClientFactory\" />
     <Folder Include="Repositories\" />
   </ItemGroup>
 

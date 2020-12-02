@@ -55,7 +55,7 @@ namespace TemplateMicroservice.Api
             services.AddOptions<SampleCredentialsOptions>();
 
             services.AddScoped<ICommandHandler<SampleCommand>, SampleCommandHandler>();
-            services.AddScoped<IProvider<SampleDomainEntity>, SampleProvider>();
+            services.AddScoped<IProvider<Author>, SampleProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

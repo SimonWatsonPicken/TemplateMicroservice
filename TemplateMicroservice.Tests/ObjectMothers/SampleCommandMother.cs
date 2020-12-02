@@ -6,11 +6,7 @@ namespace TemplateMicroservice.Tests.ObjectMothers
     {
         public static SampleCommand GetValidCommand()
         {
-            return new SampleCommand
-            {
-                Id = 1,
-                Name = "Feed"
-            };
+            return new SampleCommand {Name = "Feed"};
         }
     }
 }

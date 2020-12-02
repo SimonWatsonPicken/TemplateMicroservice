@@ -1,9 +1,10 @@
 ﻿using System.Threading.Tasks;
+using TemplateMicroservice.Api.Application.Model;
 
 namespace TemplateMicroservice.Api.Application.Handlers
 {
     public interface ICommandHandler<in T>
     {
-        Task<bool> Handle(T command);
+        Task<SampleUiEntity> Handle(T command);
     }
 }

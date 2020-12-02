@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using TemplateMicroservice.Api.Application.Commands;
 using TemplateMicroservice.Api.Application.Handlers;
+using TemplateMicroservice.Api.Application.Model;
 
 namespace TemplateMicroservice.Tests.TestDoubles.Stubs
 {
@@ -14,14 +15,14 @@ namespace TemplateMicroservice.Tests.TestDoubles.Stubs
             _behaviour = behaviour;
         }
 
-        public async Task<bool> Handle(SampleCommand command)
+        public async Task<SampleUiEntity> Handle(SampleCommand command)
         {
             if (_behaviour == CommandHandlerBehaviour.ThrowsException)
             {
                 throw new Exception("Test exception.");
             }
 
-            return await Task.FromResult(true);
+            return await Task.FromResult(new SampleUiEntity());
         }
     }
 }

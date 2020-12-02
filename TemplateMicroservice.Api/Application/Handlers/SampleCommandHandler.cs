@@ -12,16 +12,16 @@ namespace TemplateMicroservice.Api.Application.Handlers
 {
     public class SampleCommandHandler : ICommandHandler<SampleCommand>
     {
-        private readonly IProvider<SampleDomainEntity> _domainEntityProvider;
+        private readonly IProvider<Author> _domainEntityProvider;
         private readonly ILogger<SampleCommandHandler> _logger;
 
-        public SampleCommandHandler(IProvider<SampleDomainEntity> domainEntityProvider, ILogger<SampleCommandHandler> logger)
+        public SampleCommandHandler(IProvider<Author> domainEntityProvider, ILogger<SampleCommandHandler> logger)
         {
             _domainEntityProvider = domainEntityProvider;
             _logger = logger;
         }
 
-        public async Task<bool> Handle(SampleCommand command)
+        public async Task<SampleUiEntity> Handle(SampleCommand command)
         {
             try
             {
@@ -30,12 +30,13 @@ namespace TemplateMicroservice.Api.Application.Handlers
                 await validator.ValidateAndThrowAsync(command);
 
                 // Convert the command to a domain entity instance.
-                var domainEntity = command.ToDomainEntity();
+                var domainEntity = command.ConvertToDomainEntity() ?? new Author();
 
                 // Call a provider to do something useful!
                 var result = _domainEntityProvider.Send(domainEntity);
 
-                return true;
+                // return true;
+                return new SampleUiEntity();
             }
             catch (ValidationException e)
             {
@@ -46,7 +47,8 @@ namespace TemplateMicroservice.Api.Application.Handlers
                 _logger.LogError(e, "An unhandled exception was caught in SampleCommandHandler.");
             }
 
-            return false;
+            //return false;
+            return new SampleUiEntity();
         }
     }
 }

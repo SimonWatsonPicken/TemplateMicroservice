@@ -18,7 +18,7 @@ namespace TemplateMicroservice.Tests.UnitTests.Infrastructure
             var result = provider.Send(domainEntity).Result;
 
             // Assert.
-            Assert.IsType<SampleDomainEntity>(result);
+            Assert.IsType<Author>(result);
         }
     }
 }

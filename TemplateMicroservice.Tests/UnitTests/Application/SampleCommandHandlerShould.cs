@@ -21,7 +21,7 @@ namespace TemplateMicroservice.Tests.UnitTests.Application
             var result = handler.Handle(new SampleCommand()).Result;
 
             // Assert.
-            Assert.False(result);
+            Assert.NotNull(result);
             Assert.True(_logger.LogWasCalled);
             Assert.Equal("An invalid command was passed to the sample handler.", _logger.Message);
         }
@@ -37,7 +37,7 @@ namespace TemplateMicroservice.Tests.UnitTests.Application
             var result = handler.Handle(command).Result;
 
             // Assert.
-            Assert.True(result);
+            Assert.NotNull(result);
             Assert.False(_logger.LogWasCalled);
         }
     }

@@ -9,17 +9,15 @@ namespace TemplateMicroservice.Tests.UnitTests.Domain
         public void BeValidWhenInstantiatedWithValidValues()
         {
             // Arrange.
-            const int id = 1;
             const string name = "Fred";
-            const int age = 25;
+            const string bio = "25";
 
             // Act.
-            var domainEntity = new SampleDomainEntity() {Id = id, Name = name, Age = age};
+            var domainEntity = new Author { Name = name, ShortBiography = bio};
 
             // Assert.
-            Assert.Equal(id, domainEntity.Id);
             Assert.Equal(name, domainEntity.Name);
-            Assert.Equal(age, domainEntity.Age);
+            Assert.Equal(bio, domainEntity.ShortBiography);
         }
     }
 }

@@ -4,9 +4,9 @@ using TemplateMicroservice.Domain.Providers;
 
 namespace TemplateMicroservice.Infrastructure.Providers.SampleProvider
 {
-    public class SampleProvider : IProvider<SampleDomainEntity>
+    public class SampleProvider : IProvider<Author>
     {
-        public async Task<SampleDomainEntity> Send(SampleDomainEntity entity)
+        public async Task<Author> Send(Author entity)
         {
             return await Task.FromResult(entity);
         }

@@ -1,9 +1,14 @@
-﻿namespace TemplateMicroservice.Api.Application.Commands
+﻿using TemplateMicroservice.Domain.Aggregates.SampleAggregate;
+
+namespace TemplateMicroservice.Api.Application.Commands
 {
     public class SampleCommand
     {
-        public  int Id { get; set; }
-
         public string Name { get; set; }
+
+        public Author ConvertToDomainEntity()
+        {
+            return new Author {Name = Name};
+        }
     }
 }

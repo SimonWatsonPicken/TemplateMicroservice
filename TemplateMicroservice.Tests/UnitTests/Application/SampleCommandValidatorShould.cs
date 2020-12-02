@@ -13,31 +13,7 @@ namespace TemplateMicroservice.Tests.UnitTests.Application
         {
             _validator = new SampleCommandValidator();
         }
-        
-        [Fact]
-        public void FailWhenIdIsZero()
-        {
-            // Arrange.
-            var command = SampleCommandMother.GetValidCommand();
-            command.Id = 0;
 
-            // Act.
-            // Assert.
-            _validator.ShouldHaveValidationErrorFor(x => x.Id, command).WithErrorMessage("The id must be greater than zero.");
-        }
-        
-        [Fact]
-        public void FailWhenIdIsLessThanZero()
-        {
-            // Arrange.
-            var command = SampleCommandMother.GetValidCommand();
-            command.Id = -1;
-
-            // Act.
-            // Assert.
-            _validator.ShouldHaveValidationErrorFor(x => x.Id, command).WithErrorMessage("The id must be greater than zero.");
-        }
-        
         [Fact]
         public void FailWhenIdNameIsEmpty()
         {
